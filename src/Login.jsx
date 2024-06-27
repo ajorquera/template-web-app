@@ -4,46 +4,48 @@ import "./Login.css";
 export const Login = () => {
   return (
     <div className="App">
-      <div className="formContainer">
-        <form>
-          <h2 className="tittle">LOGIN</h2>
+      <div className="formContainer ">
+        <form className="form">
+          <h2 className="formTitle">Login</h2>
           <br />
-          <div>
-            <label htmlFor="email">Email:</label><input type="email" name="email" id="email" className="input" /></div>
+          <div className="formDiv">
+            <label htmlFor="email" className="formLabel">Email:</label>
+            <input type="email" name="email" id="email" className="formInput" />
+          </div>
           <br />
-          <div>
-            <label htmlFor="password">Password:</label>
+          <div className="formDiv">
+            <label htmlFor="password" className="formLabel">Password:</label>
             <input
               type="password"
               id="password"
               name="password"
-              className="input"
+              className="formInput"
             />
           </div>
           <br />
-          <div className="below">
+          <div className="below formDiv">
             <span>
-              <label htmlFor="remember">
+              <label htmlFor="remember" className="formLabel">
                 <input
                   type="checkbox"
                   name="remember"
                   id="remember"
-                  className="checkbox"
+                  className="formCheckbox"
                 />
                 Remember
               </label>
             </span>
             <span>
-              <a href="#">¿Forgot password?</a>
+              <a href="#" className="formLink">¿Forgot password?</a>
             </span>
           </div>
           <br />
-          <div className="btn">
-          <button type="submit">SUBMIT</button>
+          <div className="formBtn formDiv">
+            <button type="submit" className="formBtnSubmit">SUBMIT</button>
           </div>
           <br />
-          <div className="createAccount">
-          <a href="#">Create account</a>
+          <div className="createAccount formDiv">
+            <a href="#" className="formLink">Create account</a>
           </div>
         </form>
       </div>

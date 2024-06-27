@@ -5,6 +5,7 @@
     align-content: center;
 }
 
+
 .formContainer {
     background: #e8e3e3;
     padding: 40px;
@@ -13,17 +14,27 @@
     font-size: 1.5rem;
 }
 
-.tittle {
+
+.form {
+    width: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.formTitle {
     text-align: center;
     font-size: 2rem;
     font-weight: bold;
 }
 
-form div {
+
+.formDiv {
     margin-bottom: 24px;
 }
 
-form label {
+
+.formLabel {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
@@ -31,7 +42,8 @@ form label {
     margin-left: 8px;
 }
 
-.input {
+
+.formInput {
     width: 100%;
     height: 56px;
     font-size: 1.5rem;
@@ -41,38 +53,52 @@ form label {
     border-radius: 8px;
 }
 
-.checkbox { 
-    margin-right: 12px;
-    font-size: 1.5rem;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 8px;
+
+.formInput:hover {
+    border: 2px solid #000000;
 }
 
 
-button {
+.formCheckbox { 
+    margin-right: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.formBtnSubmit {
     width: 40%;
     height: 56px;
-    padding: 8px 4px;
+    padding: 8px 16px;
     background-color: #ffffff;
     color: #000000;
     border: 1px solid #ccc;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.5rem;
-    font-weight:600;
-}
-button:hover {
-    background-color: #007bff;
+    font-weight:500;
 }
 
-a {
+
+.formBtnSubmit:hover {
+    border: 2px solid #000000;
+    font-weight:600;
+}
+
+
+.formLink {
     text-decoration: none;
     color: black;
     cursor: pointer;
     font-weight: 500;
     font-style: normal;
 }
+
+
+.formLink:hover {
+    font-weight: 600;
+    font-style:italic;
+}
+
 
 .below {
     display: flex;
@@ -81,14 +107,8 @@ a {
     justify-content: space-between;
 }
 
-.createAccount, .btn {
+.createAccount, .formBtn {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-form {
-    width: 60vh;
-    display: flex;
-    flex-direction: column;
 }
