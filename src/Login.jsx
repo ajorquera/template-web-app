@@ -9,9 +9,7 @@ export const Login = () => {
           <h2 className="tittle">LOGIN</h2>
           <br />
           <div>
-            <label htmlFor="email">Email:</label>
-            <input type="email" name="email" id="email" className="input" />
-          </div>
+            <label htmlFor="email">Email:</label><input type="email" name="email" id="email" className="input" /></div>
           <br />
           <div>
             <label htmlFor="password">Password:</label>
@@ -36,11 +34,17 @@ export const Login = () => {
               </label>
             </span>
             <span>
-              <a href="#">¿Forgot password?</a>{" "}
+              <a href="#">¿Forgot password?</a>
             </span>
           </div>
           <br />
+          <div className="btn">
           <button type="submit">SUBMIT</button>
+          </div>
+          <br />
+          <div className="createAccount">
+          <a href="#">Create account</a>
+          </div>
         </form>
       </div>
     </div>
