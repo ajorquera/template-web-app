@@ -1,5 +1,7 @@
-import react from "react";
+import React from "react";
+import ReactDOM from "react-dom/client";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   return (
@@ -9,12 +11,16 @@ export const Login = () => {
           <h2 className="formTitle">Login</h2>
           <br />
           <div className="formDiv">
-            <label htmlFor="email" className="formLabel">Email:</label>
+            <label htmlFor="email" className="formLabel">
+              Email:
+            </label>
             <input type="email" name="email" id="email" className="formInput" />
           </div>
           <br />
           <div className="formDiv">
-            <label htmlFor="password" className="formLabel">Password:</label>
+            <label htmlFor="password" className="formLabel">
+              Password:
+            </label>
             <input
               type="password"
               id="password"
@@ -36,16 +42,22 @@ export const Login = () => {
               </label>
             </span>
             <span>
-              <a href="#" className="formLink">¿Forgot password?</a>
+              <Link to="/App/ForgotPass" className="formLink">
+                ¿Forgot password?
+              </Link>
             </span>
           </div>
           <br />
           <div className="formBtn formDiv">
-            <button type="submit" className="formBtnSubmit">SUBMIT</button>
+            <button type="submit" className="formBtnSubmit">
+              SUBMIT
+            </button>
           </div>
           <br />
           <div className="createAccount formDiv">
-            <a href="#" className="formLink">Create account</a>
+            <Link to="/App/Register" className="formLink">
+              Create account
+            </Link>
           </div>
         </form>
       </div>
