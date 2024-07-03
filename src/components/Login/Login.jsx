@@ -10,13 +10,14 @@ export const Login = () => {
   });
 
   const handleValue = (e) => {
+    console.log(e.target.name);
     setValue({ ...value, [e.target.name]: e.target.value });
+
   };
 
   const [errors, setErrors] = useState({});
 
-  const validate = () => {
-
+  const validate = (e) => {
     let errorMessage = {};
 
     !value.email
@@ -24,15 +25,12 @@ export const Login = () => {
       : !/\S+@\S+\.\S+/.test(value.email)
       ? (errorMessage.email = "El email es invalido")
       : console.log("Tipo de correo valido");
-
     !value.password
       ? (errorMessage.password = "La contraseña es obligatoria")
-      : console.log("Contraseña ingresada");
-    
+      : console.log("Contraseña ingresada correctamente");
     setErrors(errorMessage);
     return Object.keys(errorMessage).length === 0;
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     validate() && alert("Enviado");
@@ -44,31 +42,33 @@ export const Login = () => {
         <form className="form" onSubmit={handleSubmit} noValidate>
           <h2 className="formTitle">Login</h2>
           <br />
-          <div className="formDiv">
+          <div className="formDiv formDiv--error">
             <label htmlFor="email" className="formLabel">
               Email:
               <input
                 value={value.email}
                 type="email"
                 name="email"
-                className="formInput"
+                className={errors.email ? "formInput--error" : "formInput"}
                 onChange={handleValue}
               />
-              {errors.email && <p className="errors">{errors.email}</p>}
+              <p className={errors.email && "viewError"}>{errors.email}</p>
             </label>
           </div>
           <br />
-          <div className="formDiv">
+          <div className="formDiv formDiv--error">
             <label htmlFor="password" className="formLabel">
               Password:
               <input
                 value={value.password}
                 type="password"
                 name="password"
-                className="formInput"
+                className={errors.password ? "formInput--error" : "formInput"}
                 onChange={handleValue}
               />
-              {errors.password && <p className="errors">{errors.password}</p>}
+              <p className={errors.password && "viewError"}>
+                {errors.password}
+              </p>
             </label>
           </div>
           <br />
