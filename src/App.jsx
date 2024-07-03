@@ -5,6 +5,7 @@ import { Login } from "./components/Login/Login";
 import { ForgotPass } from "./components/ForgotPass/ForgotPass";
 import { Register } from "./components/Register/Register";
 import '../src/components/Login/Login.css';
+import { Formulario } from "./components/Login/Formulario";
 
 export const App = () => {
   return (

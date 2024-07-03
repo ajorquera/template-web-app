@@ -3,38 +3,47 @@ import ReactDOM from "react-dom/client";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
+const MAP_REGEX = {
+  email: /\S+@\S+\.\S+/,
+  password: /.*/
+}
+
 export const Login = () => {
-  const [value, setValue] = useState({
-    email: "",
-    password: "",
-  });
 
-  const handleValue = (e) => {
-    console.log(e.target.name);
-    setValue({ ...value, [e.target.name]: e.target.value });
+  const [ value, setValue ] = useState({email: '',password: '',});
 
-  };
-
-  const [errors, setErrors] = useState({});
+  const [ errors, setErrors ] = useState({ email: '',password: '',});
 
   const validate = (e) => {
-    let errorMessage = {};
+    let nombre = (e.target.name);
+    const value = e.target.value;
 
-    !value.email
-      ? (errorMessage.email = "El email es obligatorio")
-      : !/\S+@\S+\.\S+/.test(value.email)
-      ? (errorMessage.email = "El email es invalido")
-      : console.log("Tipo de correo valido");
-    !value.password
-      ? (errorMessage.password = "La contraseña es obligatoria")
-      : console.log("Contraseña ingresada correctamente");
-    setErrors(errorMessage);
-    return Object.keys(errorMessage).length === 0;
+    
+    const isEmailInvalid = !MAP_REGEX[nombre].test(value);
+    const isEmailEmpty = !value;
+    errors[nombre] = null;
+
+    if(isEmailInvalid) {
+      errors[nombre] = "El campo es invalido"
+    }
+
+    if(isEmailEmpty) {
+      errors[nombre] = "El campo es obligatorio"
+    }
+    
+
+ 
+    setErrors({...errors});
+
+    return Object.keys(errors).length === 0;
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    validate() && alert("Enviado");
-  };
+
+ 
+  const handleValue = (e) => { setValue({ ...value, [e.target.name]: e.target.value })
+  validate(e);
+};
+
+  const handleSubmit = (e) => { e.preventDefault(); validate(e); alert("Enviado") };
 
   return (
     <div className="App">
@@ -50,7 +59,7 @@ export const Login = () => {
                 type="email"
                 name="email"
                 className={errors.email ? "formInput--error" : "formInput"}
-                onChange={handleValue}
+                onChange={handleValue} onBlur={validate}
               />
               <p className={errors.email && "viewError"}>{errors.email}</p>
             </label>
@@ -64,7 +73,7 @@ export const Login = () => {
                 type="password"
                 name="password"
                 className={errors.password ? "formInput--error" : "formInput"}
-                onChange={handleValue}
+                onChange={handleValue} onBlur={validate}
               />
               <p className={errors.password && "viewError"}>
                 {errors.password}
