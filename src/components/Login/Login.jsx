@@ -4,8 +4,8 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 
 const MAP_REGEX = {
-  email: /\S+@\S+\.\S+/,
-  password: /.*/
+  email: /\S+@\S+\.\S+$/,
+  password: /^\S{8,16}$/
 }
 
 export const Login = () => {
@@ -16,22 +16,19 @@ export const Login = () => {
 
   const validate = (e) => {
     let nombre = (e.target.name);
-    const value = e.target.value;
-
-    
-    const isEmailInvalid = !MAP_REGEX[nombre].test(value);
-    const isEmailEmpty = !value;
+    const value = (e.target.value);
+    const isFieldInvalid = !MAP_REGEX[nombre].test(value);
+    const isFieldEmpty = !value;
+    const isFieldSpace = /\s/.test(value);
     errors[nombre] = null;
 
-    if(isEmailInvalid) {
-      errors[nombre] = "El campo es invalido"
+    if(isFieldInvalid) {
+      errors[nombre] = "El campo es invalido."
     }
 
-    if(isEmailEmpty) {
-      errors[nombre] = "El campo es obligatorio"
+    if(isFieldEmpty || isFieldSpace) {
+      errors[nombre] = "El campo es obligatorio."
     }
-    
-
  
     setErrors({...errors});
 
@@ -43,7 +40,7 @@ export const Login = () => {
   validate(e);
 };
 
-  const handleSubmit = (e) => { e.preventDefault(); validate(e); alert("Enviado") };
+  const handleSubmit = (e) => { e.preventDefault(); validate(e); console.log('El formulario ha sido enviado') };
 
   return (
     <div className="App">
