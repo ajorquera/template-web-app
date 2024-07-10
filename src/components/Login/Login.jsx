@@ -1,18 +1,24 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import appFirebase from "../../FirebaseConfig";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth(appFirebase);
 
 const MAP_REGEX = {
   email: /\S+@\S+\.\S+$/,
   password: /^\S{8,16}$/
 }
 
-export const Login = () => {
+export const Login = (e) => {
 
   const [ value, setValue ] = useState({email: '',password: '',});
 
   const [ errors, setErrors ] = useState({ email: '',password: '',});
+
+  const navigate = useNavigate();
 
   const validate = (e) => {
     let nombre = (e.target.name);
@@ -22,10 +28,11 @@ export const Login = () => {
     const isFieldSpace = /\s/.test(value);
     errors[nombre] = null;
 
+
     if(isFieldInvalid) {
       errors[nombre] = "El campo es invalido."
     }
-
+ 
     if(isFieldEmpty || isFieldSpace) {
       errors[nombre] = "El campo es obligatorio."
     }
@@ -35,13 +42,25 @@ export const Login = () => {
     return Object.keys(errors).length === 0;
   };
 
- 
   const handleValue = (e) => { setValue({ ...value, [e.target.name]: e.target.value })
   validate(e);
-};
+  };
+  const handleSubmit = (e) => {
+    
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      navigate('/App/Profile');
+    })
+    .catch((error) => {
+      alert('Error al iniciar sesión: ' + error);
+      navigate('/App/');
+    });
+  }
 
-  const handleSubmit = (e) => { e.preventDefault(); validate(e); console.log('El formulario ha sido enviado') };
-
+    
   return (
     <div className="App">
       <div className="formContainer ">
