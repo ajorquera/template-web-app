@@ -91,6 +91,20 @@
     font-weight:500;
 }
 
+.formBtnSubmit--disabled {
+    width: 40%;
+    height: 56px;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor:not-allowed;
+    font-size: 1.5rem;
+    font-weight:500;
+    opacity: 0.5;
+}
+
 
 .formBtnSubmit:hover {
     border: 2px solid #000000;

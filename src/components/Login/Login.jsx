@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./Login.css";
 import { Link, useNavigate } from "react-router-dom";
-import appFirebase from "../../FirebaseConfig";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
-const auth = getAuth(appFirebase);
+import { auth } from "../../FirebaseConfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const MAP_REGEX = {
   email: /\S+@\S+\.\S+$/,
@@ -56,7 +54,7 @@ export const Login = (e) => {
     })
     .catch((error) => {
       alert('Error al iniciar sesión: ' + error);
-      navigate('/App/');
+      setValue({ email: '',password: '',});
     });
   }
 
@@ -76,6 +74,7 @@ export const Login = (e) => {
                 name="email"
                 className={errors.email ? "formInput--error" : "formInput"}
                 onChange={handleValue} onBlur={validate}
+                autoComplete="email"
               />
               <p className={errors.email && "viewError"}>{errors.email}</p>
             </label>
@@ -90,6 +89,7 @@ export const Login = (e) => {
                 name="password"
                 className={errors.password ? "formInput--error" : "formInput"}
                 onChange={handleValue} onBlur={validate}
+                autoComplete="current-password"
               />
               <p className={errors.password && "viewError"}>
                 {errors.password}
@@ -117,7 +117,7 @@ export const Login = (e) => {
           </div>
           <br />
           <div className="formBtn formDiv">
-            <button type="submit" className="formBtnSubmit">
+            <button type="submit" className= {errors.email || errors.password ? "formBtnSubmit--disabled" : "formBtnSubmit"} disabled = {errors.email || errors.password}>
               SUBMIT
             </button>
           </div>

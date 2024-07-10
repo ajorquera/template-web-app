@@ -7,10 +7,8 @@ import { Home } from "./components/Home/Home";
 import { ForgotPass } from "./components/ForgotPass/ForgotPass";
 import { Register } from "./components/Register/Register";
 import "../src/components/Login/Login.css";
-import appFirebase from "./FirebaseConfig";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
-const auth = getAuth(appFirebase);
+import { auth } from "./FirebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 
 export const App = () => {
   const [usuario, setUsuario] = useState(null);
