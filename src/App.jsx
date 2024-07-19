@@ -5,7 +5,7 @@ import { Profile } from "./components/Profile/Profile";
 import { Login } from "./components/Login/Login";
 import { Home } from "./components/Home/Home";
 import { ForgotPass } from "./components/ForgotPass/ForgotPass";
-import { Register } from "./components/Register/Register";
+import {Register} from "./components/Register/Register";
 import "../src/components/Login/Login.css";
 import { auth } from "./FirebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";

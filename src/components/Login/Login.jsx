@@ -1,64 +1,84 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./Login.css";
+
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../../FirebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 const MAP_REGEX = {
   email: /\S+@\S+\.\S+$/,
-  password: /^\S{8,16}$/
-}
+  password: /^\S{8,16}$/,
+};
 
 export const Login = (e) => {
-
-  const [ value, setValue ] = useState({email: '',password: '',});
-
-  const [ errors, setErrors ] = useState({ email: '',password: '',});
-
+  const [value, setValue] = useState({ email: "", password: "" });
+  const [errors, setErrors] = useState({ email: "", password: "" });
+  const [rememberMe, setRememberMe] = useState(false);
   const navigate = useNavigate();
 
+  const handleRememberMe = () => {
+    setRememberMe(!rememberMe);
+  };
+
   const validate = (e) => {
-    let nombre = (e.target.name);
-    const value = (e.target.value);
+    let nombre = e.target.name;
+    const value = e.target.value;
     const isFieldInvalid = !MAP_REGEX[nombre].test(value);
     const isFieldEmpty = !value;
     const isFieldSpace = /\s/.test(value);
     errors[nombre] = null;
 
+    if (isFieldInvalid) {
+      errors[nombre] = "El campo es invalido.";
+    }
 
-    if(isFieldInvalid) {
-      errors[nombre] = "El campo es invalido."
+    if (isFieldEmpty || isFieldSpace) {
+      errors[nombre] = "El campo es obligatorio.";
     }
- 
-    if(isFieldEmpty || isFieldSpace) {
-      errors[nombre] = "El campo es obligatorio."
-    }
- 
-    setErrors({...errors});
+
+    setErrors({ ...errors });
 
     return Object.keys(errors).length === 0;
   };
 
-  const handleValue = (e) => { setValue({ ...value, [e.target.name]: e.target.value })
-  validate(e);
+  const handleValue = (e) => {
+    setValue({ ...value, [e.target.name]: e.target.value });
+    validate(e);
   };
+
   const handleSubmit = (e) => {
-    
     e.preventDefault();
+    const auth = getAuth();
     const email = e.target.email.value;
     const password = e.target.password.value;
+
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      navigate('/App/Profile');
+      navigate("/App/Profile");
+      const user = userCredential.user;
     })
     .catch((error) => {
-      alert('Error al iniciar sesión: ' + error);
-      setValue({ email: '',password: '',});
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorCode, errorMessage);
+      setValue({ email: "", password: "" });
     });
-  }
 
-    
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        const userEmail = user.email;
+        console.log("Ha ingresado el usuario: ", userEmail);
+      } else {
+        console.log("Nadie ha ingresado aun");
+      }
+    });
+  };
+
   return (
     <div className="App">
       <div className="formContainer ">
@@ -73,7 +93,8 @@ export const Login = (e) => {
                 type="email"
                 name="email"
                 className={errors.email ? "formInput--error" : "formInput"}
-                onChange={handleValue} onBlur={validate}
+                onChange={handleValue}
+                onBlur={validate}
                 autoComplete="email"
               />
               <p className={errors.email && "viewError"}>{errors.email}</p>
@@ -88,7 +109,8 @@ export const Login = (e) => {
                 type="password"
                 name="password"
                 className={errors.password ? "formInput--error" : "formInput"}
-                onChange={handleValue} onBlur={validate}
+                onChange={handleValue}
+                onBlur={validate}
                 autoComplete="current-password"
               />
               <p className={errors.password && "viewError"}>
@@ -105,6 +127,8 @@ export const Login = (e) => {
                   name="remember"
                   id="remember"
                   className="formCheckbox"
+                  checked={rememberMe}
+                  onChange={handleRememberMe}
                 />
                 Remember
               </label>
@@ -117,7 +141,18 @@ export const Login = (e) => {
           </div>
           <br />
           <div className="formBtn formDiv">
-            <button type="submit" className= {errors.email || errors.password ? "formBtnSubmit--disabled" : "formBtnSubmit"} disabled = {errors.email || errors.password}>
+            <button
+              type="submit"
+              className={
+                !value.email ||
+                !value.password ||
+                errors.email ||
+                errors.password
+                  ? "formBtnSubmit--disabled"
+                  : "formBtnSubmit"
+              }
+              disabled={errors.email || errors.password}
+            >
               SUBMIT
             </button>
           </div>
