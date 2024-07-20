@@ -1,0 +1,141 @@
+.App {
+    width: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.formContainer {
+    background: #e8e3e3;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+    font-size: 1.5rem;
+}
+
+
+.form {
+    width: 60vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.formTitle {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+.formDiv {
+    margin-bottom: 24px;
+}
+
+.formDiv--error{
+    height: 119px;
+}
+
+
+.formLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.formInput {
+    width: 100%;
+    height: 56px;
+    font-size: 1.5rem;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.formInput--error {
+    width: 100%;
+    height: 56px;
+    font-size: 1.5rem;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+
+
+.formInput:hover {
+    border: 2px solid #000000;
+}
+
+
+.formCheckbox { 
+    margin-right: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+}
+
+.formBtnSubmit {
+    width: 40%;
+    height: 56px;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight:500;
+}
+
+.formBtnSubmit--disabled {
+    width: 40%;
+    height: 56px;
+    padding: 8px 16px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor:not-allowed;
+    font-size: 1.5rem;
+    font-weight:500;
+    opacity: 0.5;
+}
+
+
+.formBtnSubmit:hover {
+    border: 2px solid #000000;
+    font-weight:600;
+}
+
+
+.formLink {
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+.formLink:hover {
+    font-weight: 600;
+    font-style:italic;
+}
+
+
+.logIn, .formBtn, .formText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.viewError {
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+    margin-left: 8px;
+}
