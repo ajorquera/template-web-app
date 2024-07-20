@@ -127,7 +127,14 @@
 }
 
 
-.forgotPass, .formBtn {
+.below {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.createAccount, .formBtn {
     display: flex;
     justify-content: center;
     align-items: center;

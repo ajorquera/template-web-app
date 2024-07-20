@@ -28,16 +28,19 @@ export const Form = ({fields, onSubmit}) => { //fields y onSubmit vienen como pr
       {/*Con map recorremos todo el arreglo, key sirve para dar un identificador unico a cada elemento del arreglo,asi react sabe exactamente cual fue el elemento que sufrio una modificacion para poder renderizarlo en pantalla, por cada campo que hay en el arreglo se va a renderizar un div con un label y un input en el, las propiedades y los valores son los que vienen desde el componente padre.*/}
       {fields.map((field) => ( 
         <div key={field.name}>
-          <label>{field.label}</label>
+          <label className='formLabel'>{field.label}</label>
           <input
+            className='formInput'
             name={field.name}
             type={field.type}
             value={contentForm[field.name]} //El valor de cada campo sera el que este dentro de contentForm donde el nombre del campo coincida con el campo actual.
             onChange={handleChange} 
           />
+          <p>
+          Este es el mensaje de error.</p>
         </div>
       ))}
-      <button type='submit'>Register</button>
+      <button className='formBtnSubmit' type='submit'>Register</button>
     </form>
   );
 }
