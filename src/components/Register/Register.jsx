@@ -36,7 +36,7 @@ export const Register = () => {
                         <button type="submit" className='formBtnSubmit'>GET STARTED</button>
                     </div>
                     <div className='formDiv forgotPass'>
-                        <Link to="/App/ForgotPass" className='formLink'>Forgot password</Link>
+                        <Link to="/App/ForgotPass" className='formLink'>¿Forgot password?</Link>
                     </div>
                 </form>
             </div>
