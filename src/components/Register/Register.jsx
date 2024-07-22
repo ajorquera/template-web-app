@@ -21,6 +21,7 @@ export const Register = () => {
         const valueField = e.target.value; //Contiene el valor del campo.
         const invalidField = !MAP_REGEX[nameField].test(valueField); //Segun el nombre del campo en que se encuentra, valida si el valor de ese campo coincide con el valor de la expresión regular que tiene el mismo nombre.
         const emptyField = !valueField; //Valida si el campo actual no tiene ningun valor en el.
+        
         errorsInput[nameField]=null;
 
         if(invalidField) {
