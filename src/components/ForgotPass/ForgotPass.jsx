@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import './ForgotPass.css'
 
 export const ForgotPass = () => {
@@ -7,33 +7,32 @@ export const ForgotPass = () => {
     const MAP_REGEX = {email: /\S+@\S+\.\S+$/,};
 
     //Usamos un estado para manejar el cambio del texto en el input.
-    const [ valueInputEmail, setValueInputEmail ] = useState({email: ''});
+    const [ valueInputEmail, setValueInputEmail ] = useState({email: '',});
 
     //Usamos un estado para manejar el error en caso de que lo haya.
-    const [ errorsEmail, setErrorsEmail ] = useState({email: ''});
+    const [ errorsEmail, setErrorsEmail ] = useState({email: '',});
 
     //Creamos una función que maneje el envio de la información.
     const handleSubmit = (e) => {
         e.preventDefault(); //Evitamos que la página se recargue al darle click al submit.
     }
     const handleValidate = (e) => {
-        const email = e.target.name;
+        const name = e.target.name;
         const valueField = e.target.value;
-        const invalidField = !MAP_REGEX[email].test(valueField);
+        const invalidField = !MAP_REGEX[name].test(valueField);
         const emptyField = !valueField;
-        errorsEmail[email] = null;
+        errorsEmail[name] = null;
 
         if (invalidField) {
-            errorsEmail[email] = "El campo es invalido.";
+            errorsEmail[name] = "El campo es invalido.";
           }
       
         if (emptyField) {
-            errorsEmail[email] = "El campo es obligatorio.";
+            errorsEmail[name] = "El campo es obligatorio.";
         }
 
         setErrorsEmail({...errorsEmail});   
     }
-    
         //Creamos una función que maneje el cambio del texto.
         const handleChange = (e) => {
             setValueInputEmail({
@@ -50,7 +49,7 @@ export const ForgotPass = () => {
                     <div className="formDiv">
                         <p className='formText'>Please enter your email to confirm your identify.</p>
                     </div>
-                    <div className='formDiv--error formDiv'>
+                    <div className='formDiv formDiv--error'>
                         <label htmlFor="" className="formLabel">
                             Email 
                             <input type="email" name="email" id="" className={errorsEmail.email ? 'formInput--error' : 'formInput'} onChange={handleChange} onBlur={handleValidate}/>
@@ -59,7 +58,7 @@ export const ForgotPass = () => {
                     </div>
                     <br />
                     <div className="formBtn formDiv ">
-                        <button type="submit" className={errorsEmail.email || !valueInputEmail.email ? 'formBtnSubmit--disabled' : 'formBtnSubmit'}>SUBMIT</button>
+                        <button type="submit" className={errorsEmail.email || !valueInputEmail.email ? 'formBtnSubmit--disabled' : 'formBtnSubmit'} disabled={errorsEmail.email || !valueInputEmail.email}>SUBMIT</button>
                     </div>
                     <br />
                     <div className="formDiv logIn">

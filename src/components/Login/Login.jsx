@@ -151,7 +151,7 @@ export const Login = (e) => {
                   ? "formBtnSubmit--disabled"
                   : "formBtnSubmit"
               }
-              disabled={errors.email || errors.password}
+              disabled={!value.email || !value.password || errors.email || errors.password}
             >
               SUBMIT
             </button>
