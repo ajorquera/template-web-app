@@ -134,7 +134,7 @@ export const Login = (e) => {
               </label>
             </span>
             <span>
-              <Link to="/App/ForgotPass" className="formLink">
+              <Link to="/forgot-password" className="formLink">
                 ¿Forgot password?
               </Link>
             </span>
@@ -158,7 +158,7 @@ export const Login = (e) => {
           </div>
           <br />
           <div className="createAccount formDiv">
-            <Link to="/App/Register" className="formLink">
+            <Link to="/register" className="formLink">
               Create account
             </Link>
           </div>

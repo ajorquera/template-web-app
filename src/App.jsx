@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Profile } from "./components/Profile/Profile";
-import { Login } from "./components/Login/Login";
-import { Home } from "./components/Home/Home";
-import { ForgotPass } from "./components/ForgotPass/ForgotPass";
-import { ForgotPassConfirm } from "./components/ForgotPass/ForgotPassConfirm";
-import {Register} from "./components/Register/Register";
-import "../src/components/Login/Login.css";
+import { Login } from "./pages/Login/Login";
+
+import "./pages/Login/Login.css";
 import { auth } from "./FirebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
+import router from "./router";
+import { RouterProvider } from "react-router-dom";
 
 export const App = () => {
   const [usuario, setUsuario] = useState(null);
@@ -24,15 +21,8 @@ export const App = () => {
   {usuario ? <Profile correoUsuario={usuario.email} /> : <Login />}
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/App/Home " element={< Home/>} />
-        <Route path="/App/" element={<Login />} />
-        <Route path="/App/Profile" element={<Profile />} />
-        <Route path="/App/Register" element={<Register />} />
-        <Route path="/App/ForgotPass" element={<ForgotPass />} />
-        <Route path="/App/ForgotPassConfirm" element={<ForgotPassConfirm/>} />
-      </Routes>
-    </BrowserRouter>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 };
