@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './ForgotPassConfirm.css';
 import { Link } from 'react-router-dom';
 
-export const ForgotPassConfirm = (e) => {
+const ForgotPassConfirm = (e) => {
 
     const MAP_REGEX = {
         password: /^\S{8,16}$/,
@@ -76,3 +76,5 @@ export const ForgotPassConfirm = (e) => {
         </div>
     )
 }
+
+export default ForgotPassConfirm;

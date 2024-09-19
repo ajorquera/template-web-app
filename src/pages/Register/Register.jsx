@@ -10,7 +10,7 @@ const MAP_REGEX = {
     confirmpassword: /^\S{8,16}$/,
   };
 
-export const Register = () => {
+const Register = () => {
 
     //Usamos useState para manejar el valor de los input
     const [ textInput, setTextInput] = useState({ name: '', email: '', password: '', confirmpassword: '' })
@@ -125,3 +125,5 @@ export const Register = () => {
         </div>
     )
 }
+
+export default Register;
