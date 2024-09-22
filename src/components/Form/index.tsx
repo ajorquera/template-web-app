@@ -1,0 +1,1 @@
+export { default, type Props as FormProps } from './Form';
