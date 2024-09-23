@@ -5,7 +5,7 @@ import React from "react";
 
 const OuterLayout = () => {
     return (
-      <Flex alignItems="center" justifyContent="center">
+      <Flex style={{height: '100vh'}} alignItems="center" justifyContent="center">
         <Outlet />
       </Flex>
   );

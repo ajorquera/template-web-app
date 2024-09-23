@@ -14,7 +14,7 @@ const MAP_REGEX = {
   password: /^\S{8,16}$/,
 };
 
-export const Login = (e) => {
+const Login = (e) => {
   const [value, setValue] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [rememberMe, setRememberMe] = useState(false);
@@ -167,3 +167,5 @@ export const Login = (e) => {
     </div>
   );
 };
+
+export default Login;
