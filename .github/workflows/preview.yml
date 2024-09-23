@@ -2,8 +2,7 @@ name: Deploy Preview and Run Tests
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [ main, master ]
 
 jobs:
   build-and-preview:
