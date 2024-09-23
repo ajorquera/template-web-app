@@ -28,9 +28,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the app
-        run: npm run build
-
       - name: Run tests with coverage and save result to file
         run: |
           npm run test:coverage > coverage-summary.txt  # Guarda el reporte en un archivo
