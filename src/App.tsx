@@ -8,7 +8,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import router from "./router";
 import { RouterProvider } from "react-router-dom";
 
-export const App = () => {
+const App = () => {
   const [usuario, setUsuario] = useState(null);
 
   onAuthStateChanged(auth, (usuarioFirebase) => {
@@ -26,3 +26,5 @@ export const App = () => {
     </React.StrictMode>
   );
 };
+
+export default App;
