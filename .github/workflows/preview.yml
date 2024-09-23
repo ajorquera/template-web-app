@@ -1,0 +1,38 @@
+name: Deploy Preview and Run Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node_modules
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Run tests with coverage and save result to file
+        run: |
+          npm run test:coverage > coverage-summary.txt  # Guarda el reporte en un archivo
+          cat coverage-summary.txt                       # Muestra el reporte en la consola
