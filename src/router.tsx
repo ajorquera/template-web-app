@@ -5,6 +5,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import Register from "./pages/Register/Register";
 import ForgotPassConfirm from "./pages/ForgotPass/ForgotPassConfirm";
 import DashboardLayout from "./layouts/Dashboard.layout";
+import {PrivateRoute} from "@/components/Auth";
 
 
 const router = createBrowserRouter([
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       path: "/",
       element: <OuterLayout />,
       children: [
+        {
+          path: "/",
+          element: <Navigate to="/dashboard" />
+        },
         {
           path: "login",
           element: <Login />,

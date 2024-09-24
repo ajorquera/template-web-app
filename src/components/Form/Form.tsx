@@ -39,7 +39,6 @@ const Form:FC<Props> = ({children, validationFields, initialValues = {}, onSubmi
 
     const onInnerSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        const isValid = !checkIsInvalid(e);
         
         if(isValid) {    
             onSubmit(values);

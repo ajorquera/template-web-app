@@ -1,11 +1,14 @@
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
 import React from "react";
+import { ProvideAuth } from "@/components/Auth";
 
 const App = () => {
   return (
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <ProvideAuth>
+        <RouterProvider router={router} />
+      </ProvideAuth>
     </React.StrictMode>
   );
 };

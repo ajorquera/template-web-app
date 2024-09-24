@@ -1,5 +1,6 @@
 import React, { HtmlHTMLAttributes, ReactNode } from 'react';
 import { FC } from 'react';
+import Text from '@/components/Text';
 
 export interface Props extends HtmlHTMLAttributes<HTMLInputElement> {
     label: ReactNode
@@ -13,7 +14,7 @@ const TextField: FC<Props> = ({ label, error, ...props}) => {
     return (
         <div>
             <label>
-                <div>{label}</div>
+                <Text fontSize="12" display="block">{label}</Text>
                 <input {...props} />
                 <div>{error}</div>
             </label>

@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
-import { configDefaults } from 'vitest/config';
+import path from 'path'
+
 
 export default defineConfig({
   base: process.env.BASE_URL ?? '/',
@@ -9,6 +10,11 @@ export default defineConfig({
     coverage: {
       reporter: ['text', 'lcov'], 
       reportsDirectory: './coverage',
+    },
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src')
     },
   },
 });
