@@ -5,6 +5,7 @@ import Card from "@/components/Card";
 
 export interface Props {
   onSubmit?: FormProps["onSubmit"];
+  loading?: boolean;
 }
 
 const validationFields = {
@@ -16,7 +17,7 @@ const validationFields = {
   }
 };
 
-const Login: FC<Props> = ({onSubmit}) => {
+const Login: FC<Props> = ({onSubmit, loading}) => {
 
   const handleSubmit = (values: any) => {
     onSubmit?.(values);
@@ -31,7 +32,7 @@ const Login: FC<Props> = ({onSubmit}) => {
           <br />
           <TextField onChange={onChange} value={values['email']} label="Password" name="password" type="password" />
           <br />
-          <button disabled={isInvalid} type="submit">Login</button>
+          <button disabled={isInvalid || loading} type="submit">{loading ? 'Loading...' : 'Login'}</button>
         </Card>
       )}
     </Form>

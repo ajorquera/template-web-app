@@ -1,4 +1,5 @@
-import React, { FC, PropsWithChildren } from "react"
+import { FC, PropsWithChildren } from "react"
+import Box from "../Box/Box"
 
 interface Props extends PropsWithChildren {
     alignItems?: 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline';
@@ -6,11 +7,11 @@ interface Props extends PropsWithChildren {
     style ?: React.CSSProperties;
 }
 
-const Flex: FC<Props> = ({children, alignItems, justifyContent, style}) => {
+const Flex: FC<Props> = ({children, ...props}) => {
     return (
-        <div style={{...style, display: 'flex', alignItems, justifyContent}}>
+        <Box display="flex" alignItems="center" {...props}>
             {children}
-        </div>
+        </Box>
     )
 };
 

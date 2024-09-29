@@ -1,15 +1,18 @@
 import { RouterProvider } from "react-router-dom";
-import router from "./router";
-import React from "react";
 import { ProvideAuth } from "@/components/Auth";
+import { StrictMode } from "react";
+import router from "./router";
+import {ProvideNotification} from "@/components/Notification";
 
 const App = () => {
   return (
-    <React.StrictMode>
+    <StrictMode>
       <ProvideAuth>
-        <RouterProvider router={router} />
+        <ProvideNotification>
+          <RouterProvider router={router} />
+        </ProvideNotification>
       </ProvideAuth>
-    </React.StrictMode>
+    </StrictMode>
   );
 };
 

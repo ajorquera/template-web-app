@@ -1,12 +1,12 @@
 import React from "react";
-import Login, { AmplifyLogin, NewLogin } from "./pages/Login";
+import Login, { AmplifyLogin } from "./pages/Login";
 import OuterLayout from "./layouts/Outer.layout";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, Path } from "react-router-dom";
 import Register from "./pages/Register/Register";
 import ForgotPassConfirm from "./pages/ForgotPass/ForgotPassConfirm";
 import DashboardLayout from "./layouts/Dashboard.layout";
-import {PrivateRoute} from "@/components/Auth";
-
+import Logout from "./pages/Logout";
+import Dashboard from "./pages/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -24,11 +24,7 @@ const router = createBrowserRouter([
         {
           path: "amplify-login",
           element: <AmplifyLogin />,
-        },{
-          path: "new-login",
-          element: <NewLogin />,
-        },
-        {
+        }, {
           path: "register",
           element: <Register />,
         },
@@ -41,7 +37,17 @@ const router = createBrowserRouter([
     {
       path: "dashboard",
       element: <DashboardLayout />,
-      children: []
+      children: [
+        {
+          path: "home",
+          name: "home",
+          element: <Dashboard />
+        }
+      ]
+    },
+    {
+      path: "logout",
+      element: <Logout />
     },
     {
       path: "*",

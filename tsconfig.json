@@ -1,11 +1,15 @@
 {
     "compilerOptions": {
-        "jsx": "react",
+        "jsx": "react-jsx",
         "baseUrl": ".",
         "target": "es6",
+        "moduleResolution": "NodeNext",
         "paths": {
             "@/*": [
                 "./src/*"
+            ],
+            "components/*": [
+                "./src/components/*"
             ],
         }
     }
