@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Form, { FormProps } from "../../components/Form";
-import TextField from "../../components/TextField";
+import TextField from "../../components/TextInput";
 import Card from "../../components/Card";
 
 export interface Props {

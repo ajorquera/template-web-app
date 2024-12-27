@@ -1,16 +1,20 @@
 import React, { FC, PropsWithChildren } from "react"
 
-interface Props extends PropsWithChildren {
+import Box,{ BoxProps } from "../Box"
+
+interface Props extends BoxProps {
     alignItems?: 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline';
     justifyContent?: 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around' | 'space-evenly';
     style ?: React.CSSProperties;
+    flexDirection?: 'row' | 'column';
+    gap?: string | number;
 }
 
-const Flex: FC<Props> = ({children, alignItems, justifyContent, style}) => {
+const Flex: FC<Props> = ({children, alignItems, justifyContent, flexDirection,gap, ...props}) => {
     return (
-        <div style={{...style, display: 'flex', alignItems, justifyContent}}>
+        <Box {...props} style={{...props.style, display: 'flex', flexDirection, alignItems,gap, justifyContent}} >
             {children}
-        </div>
+        </Box>
     )
 };
 

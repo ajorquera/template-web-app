@@ -2,7 +2,7 @@ import React from "react";
 import Login, { AmplifyLogin, NewLogin } from "./pages/Login";
 import OuterLayout from "./layouts/Outer.layout";
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import Register from "./pages/Register/Register";
+import Register from "./pages/Register";
 import ForgotPassConfirm from "./pages/ForgotPass/ForgotPassConfirm";
 import DashboardLayout from "./layouts/Dashboard.layout";
 
