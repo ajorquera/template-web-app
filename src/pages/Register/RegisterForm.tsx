@@ -1,11 +1,5 @@
 import React, { FC } from 'react';
-import Link from '../../components/Link';
-import Card from '../../components/Card';
-import Form, {TextInputForm} from '../../components/Form';
-import Text from '../../components/Text';
-import Button from '../../components/Button';
-import Flex from '../../components/Flex';
-import { regexVal } from '../../components/Form/validators';
+import {RouterLink as Link, Card, Form,Text, Button, Flex, TextInputForm, regexVal} from '../../components';
 
 interface Values {
     name: string;
@@ -57,7 +51,7 @@ const Register: FC<Props> = ({onSubmit, loading}) => {
                             {loading ? 'Loading...': 'Submit'}
                         </Button>
                     </Text>
-                    <Text fontSize={12} display="block">Already have an account? <Link>Login</Link></Text>
+                    <Text fontSize={12} display="block">Already have an account? <Link href="/login">Login</Link></Text>
                 </Flex>
                 </>
                 )}

@@ -23,10 +23,9 @@ const TextInput: FC<Props> = ({ label, error, ...props}) => {
                 <Text fontWeight="bold" display='block' fontSize={12}>{label}</Text>
                 <Input id={id} width="100%" {...props}/>
             </Text>
-            <Text display='block' color='red' fontWeight="bold" verticalAlign="top" fontSize={8}>{error ?? ' '}</Text>
+            <Text display='block' color='red' fontWeight="bold" verticalAlign="top" fontSize={8}>{typeof error === 'string' ? error : error && 'Invalid field'}</Text>
         </Box>
     );
 };
 
 export default TextInput;
-export { Props as TextInputProps };
