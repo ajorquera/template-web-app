@@ -13,14 +13,16 @@ export interface MarginProps {
     mr?: numbStr;
     mb?: numbStr;
     ml?: numbStr;
+    my?: numbStr;
+    mx?: numbStr;
 }
 
-export const getMargin = ({ m, margin, marginTop, marginRight, marginBottom, marginLeft, mt, mr, mb, ml, ...props }: MarginProps) => {
+export const getMargin = ({ m, margin, marginTop, marginRight, marginBottom, marginLeft, my, mx, mt, mr, mb, ml, ...props }: MarginProps) => {
     const marginProps = removeUndefined({
-        marginTop: marginTop ?? mt,
-        marginRight: marginRight ?? mr,
-        marginBottom: marginBottom ?? mb,
-        marginLeft: marginLeft ?? ml,
+        marginTop: marginTop ?? mt ?? my,
+        marginRight: marginRight ?? mr ?? mx,
+        marginBottom: marginBottom ?? mb ?? my,
+        marginLeft: marginLeft ?? ml ?? mx,
         margin: margin ?? m
     });
 

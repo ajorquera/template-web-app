@@ -5,12 +5,12 @@ import Text, { TextProps } from "../Text"
 import React from "react"
 
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, TextProps {
-
+export interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, TextProps {
+    fullWidth?: boolean;
 }
 
-const Button: FC<Props> = ({ children, ...props }) => {
-    return <Text className="Button" as="button" {...props}>{children}</Text>
+const Button: FC<Props> = ({ children,fullWidth, ...props }) => {
+    return <Text width={fullWidth ? '100%' : ''} className="Button" as="button" {...props}>{children}</Text>
 }
 
 export default Button;

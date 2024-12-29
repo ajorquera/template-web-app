@@ -34,6 +34,7 @@ const Login = () => {
     }, [value, error]);
     return (
         <AuthBaseForm 
+            sso={[{provider: 'Google', opts: {}}, {provider: 'Apple', opts: {}}]}
             title='Login' 
             formFields={FORM_FIELDS} 
             error={error?.message} 

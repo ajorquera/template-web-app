@@ -8,6 +8,7 @@ export interface BorderProps {
     borderBottom?: string;
     borderY?: string;
     borderX?: string;
+    borderRadius?: string | number;
 }
 
 export const getBorder = ({ border, borderLeft, borderRight, borderY, borderX, borderTop, borderBottom, ...props }: BorderProps) => {

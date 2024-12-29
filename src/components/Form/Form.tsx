@@ -2,6 +2,7 @@ import React, { FormEvent, FormHTMLAttributes, ReactNode, useCallback, useEffect
 import { FC } from "react";
 import {validateFn, ContextProps, StateField, validateObj} from "./interfaces";
 import context from "./context";
+import Box, { BoxProps } from "../Box";
 
 export interface Props extends Omit<FormHTMLAttributes<HTMLFormElement>, 'children'> {
     initialValues?: Record<string, any>;    
@@ -9,6 +10,7 @@ export interface Props extends Omit<FormHTMLAttributes<HTMLFormElement>, 'childr
     validationFields?: Record<string, validateFn | validateObj>;
     children: ReactNode | ((props: ContextProps) => ReactNode);
     values?: Record<string, any>;
+    boxProps?: BoxProps;
 }
 
 const Form:FC<Props> = ({children, validationFields, initialValues = {}, onSubmit, ...props}) => {
@@ -116,11 +118,13 @@ const Form:FC<Props> = ({children, validationFields, initialValues = {}, onSubmi
     }), [stateFields, submmitCount, isValid, isTouched]);
 
     return (
-        <context.Provider value={contextProps}>
-            <form autoComplete="off" noValidate {...props} onSubmit={onInnerSubmit}>
-            {typeof children === "function" ? children(contextProps) : children}
-            </form>
-        </context.Provider>
+        <Box {...props.boxProps}>
+            <context.Provider value={contextProps}>
+                <form autoComplete="off" noValidate {...props} onSubmit={onInnerSubmit}>
+                {typeof children === "function" ? children(contextProps) : children}
+                </form>
+            </context.Provider>
+        </Box>
     );
 }
 
