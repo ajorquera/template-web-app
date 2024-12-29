@@ -84,7 +84,7 @@ const Form:FC<Props> = ({children, validationFields, initialValues = {}, onSubmi
             ({validator} = validatorOpts);
         }
 
-        const isValid = validator(value, stateFields);
+        const isValid = validator ? validator(value, stateFields) : true;
         const isInvalid = !isValid;
         errors[fieldName] = isInvalid;
         setErrors({...errors});  

@@ -1,11 +1,8 @@
 import React, { CSSProperties, FC, PropsWithChildren } from "react"
+import { getMargin, getPadding, getSize, getBorder, MarginProps, PaddingProps, SizeProps, BorderProps } from "./utils";
+import { pipe } from "../../fn";
 
-export interface Props extends PropsWithChildren {
-    width?    : number | string;
-    height?   : number | string;
-    minWidth?    : number | string;
-    minHeight?   : number | string;
-    mt?       : number | string;
+export interface Props extends PropsWithChildren, MarginProps, PaddingProps, SizeProps, BorderProps {
     style?    : React.CSSProperties;
     display?  : CSSProperties['display'];
     as?       : React.ElementType;
@@ -13,24 +10,24 @@ export interface Props extends PropsWithChildren {
     backgroundColor?: string;
     bg?: string;
     border?: string;
-
+    borderLeft?: string;
+    borderRight?: string;
+    borderY?: string;
+    position?: 'absolute' | 'relative' | 'fixed';
 }
 
-const Box: FC<Props> = ({width, height, display,border, as, mt, style, className,minHeight,backgroundColor,bg, minWidth, ...props}) => {
+const Box: FC<Props> = ({display, position,as, style, className,backgroundColor,bg, ...props}) => {
+    const styleProps = pipe(getMargin, getPadding, getSize, getBorder)(props);
+
     const Component = as ?? 'div';
     return (
         <Component 
             className={className} 
             style={{
-                width, 
-                height, 
-                border,
+                position,
                 display, 
-                marginTop: 
-                mt,
-                minHeight,
-                minWidth, 
                 backgroundColor: bg ?? backgroundColor,
+                ...styleProps,
                 ...style
             }} 
             {...props} />

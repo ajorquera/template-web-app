@@ -12,8 +12,8 @@ interface Props extends BoxProps {
     htmlFor?: string;
 }
 
-const Text: FC<Props> = ({ children, textAlign, fontWeight,verticalAlign, fontSize, color, as="span", display="inline",  style,  ...props }) => {
-    return <Box className="Text" {...props} style={{...style, textAlign,fontSize,display,verticalAlign, fontWeight, color}} as={as}>{children}</Box>
+const Text: FC<Props> = ({ children, textAlign, fontWeight,verticalAlign, fontSize, color, as="span",  style,  ...props }) => {
+    return <Box className="Text" {...props} style={{...style, textAlign,fontSize,verticalAlign, fontWeight, color}} as={as}>{children}</Box>
 }
 
 export default Text;

@@ -27,7 +27,7 @@ const useAsync = <T>(asyncFn: (val: any) => Promise<T>, opts: Opts = { autoRun: 
         }
     }, [asyncFn, opts]);
 
-    return { execute, value, error, loading };
+    return { execute, value, error, loading, data: value };
 };
 
 export default useAsync;
