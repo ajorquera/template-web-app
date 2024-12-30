@@ -1,4 +1,4 @@
-import { removeUndefined } from '../../../utils';
+import { pipe, copyObjSpread, setPropValueFromPriority } from '../../../utils';
 import { numbStr } from '../../../interfaces';
 
 
@@ -17,16 +17,17 @@ export interface MarginProps {
     mx?: numbStr;
 }
 
-export const getMargin = ({ m, margin, marginTop, marginRight, marginBottom, marginLeft, my, mx, mt, mr, mb, ml, ...props }: MarginProps) => {
-    const marginProps = removeUndefined({
-        marginTop: marginTop ?? mt ?? my,
-        marginRight: marginRight ?? mr ?? mx,
-        marginBottom: marginBottom ?? mb ?? my,
-        marginLeft: marginLeft ?? ml ?? mx,
-        margin: margin ?? m
-    });
+export const getMargin = (props: MarginProps) => {
+    const marginProps = pipe(
+        copyObjSpread,
+        setPropValueFromPriority('marginTop', ['marginTop', 'mt', 'my']),
+        setPropValueFromPriority('marginRight', ['marginRight', 'mr', 'mx']),
+        setPropValueFromPriority('marginBottom', ['marginBottom', 'mb', 'my']),
+        setPropValueFromPriority('marginLeft', ['marginLeft', 'ml', 'mx']),
+        setPropValueFromPriority('margin', ['margin', 'm'])
+    )(props);
 
-    return { ...props, ...marginProps };
+    return marginProps
 }
 
 export interface PaddingProps {
@@ -39,19 +40,20 @@ export interface PaddingProps {
     pr?: numbStr;
     pb?: numbStr;
     pl?: numbStr;
+    px?: numbStr;
+    py?: numbStr;
     p?: numbStr;
 }
 
 export const getPadding = (props: PaddingProps) => {
-    const { padding, paddingTop, paddingRight, paddingBottom, paddingLeft, pt, pr, pb, pl, p } = props;
+    const paddingProps = pipe(
+        copyObjSpread,
+        setPropValueFromPriority('paddingTop', ['paddingTop', 'pt', 'py']),
+        setPropValueFromPriority('paddingRight', ['paddingRight', 'pr', 'px']),
+        setPropValueFromPriority('paddingBottom', ['paddingBottom', 'pb', 'py']),
+        setPropValueFromPriority('paddingLeft', ['paddingLeft', 'pl', 'px']),
+        setPropValueFromPriority('padding', ['padding', 'p'])
+    )(props);
 
-    const paddingProps = removeUndefined({
-        padding: padding ?? p,
-        paddingTop: paddingTop ?? pt,
-        paddingRight: paddingRight ?? pr,
-        paddingBottom: paddingBottom ?? pb,
-        paddingLeft: paddingLeft ?? pl
-    });
-
-    return { ...props, ...paddingProps };
+    return paddingProps;
 }
