@@ -1,5 +1,5 @@
 import { numbStr } from '../../../interfaces';
-import { removeUndefined } from '../../../utils';
+import { pipe, removeProps, removeUndefined, setPropValueFromPriority } from '../../../utils';
 
 export interface SizeProps {
     width?: numbStr;
@@ -20,13 +20,15 @@ export interface SizeProps {
     maxHeight?: numbStr;
 }
 
-export const getSize = ({ width, w, height, h, minWidth, minW, minH, minHeight, ...props }: SizeProps) => {
-    const sizeProps = removeUndefined({
-        width: width ?? w,
-        height: height ?? h,
-        minWidth: minWidth ?? minW,
-        minHeight: minHeight ?? minH
-    });
+export const getSize = (props: { style: SizeProps }) => {
+    const style = pipe(
+        setPropValueFromPriority('width', ['width', 'w']),
+        setPropValueFromPriority('height', ['height', 'h']),
+        setPropValueFromPriority('minWidth', ['minWidth', 'minW']),
+        setPropValueFromPriority('minHeight', ['minHeight', 'minH'])
+    )({ ...props });
 
-    return { ...sizeProps, ...props };
+    const newProps = removeProps(['width', 'height', 'minWidth', 'minHeight'])(props);
+
+    return { ...newProps, style: { ...props.style, ...style } };
 }

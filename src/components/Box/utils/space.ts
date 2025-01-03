@@ -1,4 +1,4 @@
-import { pipe, copyObjSpread, setPropValueFromPriority } from '../../../utils';
+import { pipe, copyObjSpread, setPropValueFromPriority, removeUndefined, removeProps } from '../../../utils';
 import { numbStr } from '../../../interfaces';
 
 
@@ -17,17 +17,18 @@ export interface MarginProps {
     mx?: numbStr;
 }
 
-export const getMargin = (props: MarginProps) => {
-    const marginProps = pipe(
-        copyObjSpread,
+export const getMargin = (props: { style: MarginProps }) => {
+    const style = pipe(
         setPropValueFromPriority('marginTop', ['marginTop', 'mt', 'my']),
         setPropValueFromPriority('marginRight', ['marginRight', 'mr', 'mx']),
         setPropValueFromPriority('marginBottom', ['marginBottom', 'mb', 'my']),
         setPropValueFromPriority('marginLeft', ['marginLeft', 'ml', 'mx']),
-        setPropValueFromPriority('margin', ['margin', 'm'])
-    )(props);
+        setPropValueFromPriority('margin', ['margin', 'm']),
+    )({ ...props });
 
-    return marginProps
+    const newProps = removeProps(['marginTop', 'marginRight', 'marginBottom', 'marginLeft', 'margin', 'mt', 'mr', 'mb', 'ml', 'my', 'mx'])(props);
+
+    return { ...newProps, style: { ...props.style, ...style } };
 }
 
 export interface PaddingProps {
@@ -45,15 +46,16 @@ export interface PaddingProps {
     p?: numbStr;
 }
 
-export const getPadding = (props: PaddingProps) => {
-    const paddingProps = pipe(
-        copyObjSpread,
+export const getPadding = (props: { style: PaddingProps }) => {
+    const style = pipe(
         setPropValueFromPriority('paddingTop', ['paddingTop', 'pt', 'py']),
         setPropValueFromPriority('paddingRight', ['paddingRight', 'pr', 'px']),
         setPropValueFromPriority('paddingBottom', ['paddingBottom', 'pb', 'py']),
         setPropValueFromPriority('paddingLeft', ['paddingLeft', 'pl', 'px']),
         setPropValueFromPriority('padding', ['padding', 'p'])
-    )(props);
+    )({ ...props });
 
-    return paddingProps;
+    const newProps = removeProps(['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft', 'padding', 'pt', 'pr', 'pb', 'pl', 'px', 'py'])(props);
+
+    return { ...newProps, style: { ...props.style, ...style } };
 }

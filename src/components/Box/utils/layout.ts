@@ -1,13 +1,14 @@
 import { CSSProperties } from "react";
-import { copyObjSpread, pipe, setPropValueFromPriority } from "../../../utils";
+import { pipe, removeProps, setPropValueFromPriority } from "../../../utils";
 
 export interface LayoutProps extends Pick<CSSProperties, 'display' | 'position'> { }
 
-export const getLayout = (props: LayoutProps) => {
-    const layoutProp = pipe(
-        copyObjSpread,
+export const getLayout = (props: { style: LayoutProps }) => {
+    const style = pipe(
         setPropValueFromPriority('backgroundColor', ['backgroundColor', 'bg']),
-    )(props);
+    )({ ...props });
 
-    return layoutProp;
+    const newProps = removeProps(['backgroundColor', 'bg'])(props);
+
+    return { ...newProps, style: { ...style, ...props.style } };
 }

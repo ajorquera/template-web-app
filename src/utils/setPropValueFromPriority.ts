@@ -4,7 +4,10 @@
  */
 const setPropValueFromPriority = (key: string, priorityOrder: string[]) => (props) => {
     priorityOrder.forEach(prop => {
-        props[key] = props[key] ?? props[prop];
+        const value = props[key] ?? props[prop];
+        if (value !== undefined) {
+            props[key] = props[key] ?? props[prop];
+        }
     });
 
     return props;
