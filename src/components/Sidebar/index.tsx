@@ -1,18 +1,28 @@
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import Box, {BoxProps} from '../Box';
 import React from 'react';
 
-export interface Props extends BoxProps {
+interface Item {
+    label: string
+    icon?: string
+    href?: string
+}
 
+export interface Props extends BoxProps {
+    items: Item[]
 }
 
 /**
  * Sidebar
  */
-const Sidebar: FC<Props> = ({children, ...props}) => {
+const Sidebar: FC<Props> = ({children, items, ...props}) => {
     return (
-        <Box borderRight='2px solid black' {...props}>
-            Sidebar
+        <Box p={10} borderRight='2px solid black' {...props}>
+            {items?.map((item, index) => (
+                <Fragment key={index}>
+                    {item.label}
+                </Fragment>
+            ))}
         </Box>
     );
 };

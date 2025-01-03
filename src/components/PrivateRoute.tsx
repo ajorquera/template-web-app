@@ -13,6 +13,8 @@ export interface Props extends PropsWithChildren {
 const PrivateRoute: FC<Props> = ({children, ...props}) => {
     const {authStatus} = useAuthenticator();
 
+    if(authStatus === 'configuring') return null
+
     const isAuthorized = authStatus === 'authenticated';
 
     return isAuthorized ? children : <Navigate to="/login" />;

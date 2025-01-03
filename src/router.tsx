@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import ForgotPassConfirm from "./pages/ForgotPassword";
 import DashboardLayout from "./layouts/Dashboard.layout";
 import Logout from "./pages/Logout";
+import Providers from "./pages/Providers";
 
 
 const router = createBrowserRouter([
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
       element: <OuterLayout />,
       children: [
         {
-          path: "/",
+          path: "",
           element: <Navigate to="/dashboard" />
         },
         {
@@ -41,7 +42,12 @@ const router = createBrowserRouter([
     {
       path: "dashboard",
       element: <DashboardLayout />,
-      children: []
+      children: [
+        {
+          path: "",
+          element: <Providers />
+        }
+      ]
     },
     {
       path: "logout",

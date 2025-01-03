@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Form, { FormProps } from "../../components/Form";
 import TextField from "../../components/TextInput";
-import Card from "../../components/Card";
+import Card from "../../components/Card/Card";
 
 export interface Props {
   onSubmit?: FormProps["onSubmit"];

@@ -14,9 +14,8 @@ const DashboardLayout: FC<Props> = () => {
             <Flex height="100%" flexDirection="column">
                 <Header />
                 <Flex flexGrow={1}>
-                    <Sidebar width={300} />
-                    <Page>
-                        <Text as="h1">Dashboard Layout</Text>
+                    <Sidebar items={[{label: 'a'}]} />
+                    <Page width="100%">
                         <Outlet />
                     </Page>
                 </Flex>

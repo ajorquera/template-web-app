@@ -1,12 +1,13 @@
-import React, { CSSProperties, ElementType, FC, PropsWithChildren } from "react"
 import { getMargin, getPadding, getSize,getLayout, getBorder, MarginProps, PaddingProps, SizeProps, BorderProps, LayoutProps } from "./utils";
-import { copyObjSpread, pipe, removeUndefined, removeProps } from "../../utils";
+import React, { CSSProperties, ElementType, EventHandler, FC, MouseEvent, PropsWithChildren } from "react"
+import { pipe } from "../../utils";
 
 export interface Props extends PropsWithChildren, MarginProps, PaddingProps, SizeProps, BorderProps, LayoutProps {
     style?    : CSSProperties;
     display?  : CSSProperties['display'];
     as?       : ElementType;
     className?: string;
+    onClick?  : EventHandler<MouseEvent>;
 }
 
 const Box: FC<Props> = ({as, style, ...props}) => {

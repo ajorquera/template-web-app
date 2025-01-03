@@ -11,12 +11,12 @@ export interface Props extends BoxProps {
  */
 const Header: FC<Props> = ({children, height=100, ...props}) => {
     return (
-        <>
+        <Box>
             <Box bg="white" borderBottom='2px solid black' top={0} height={height} width="100%" position='fixed' {...props}>
                 This is the header
             </Box>
-            <div style={{height}}></div>
-        </>
+            <div style={{height}}>nbsp;</div>
+        </Box>
     );
 };
 

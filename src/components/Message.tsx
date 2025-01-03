@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Flex, {FlexProps} from './Flex';
 import Text from './Text';
-import Card, {Props as CardProps} from './Card';
+import Card, {Props as CardProps} from './Card/Card';
 import React from 'react';
 
 export interface Props extends CardProps {

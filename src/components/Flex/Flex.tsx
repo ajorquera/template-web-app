@@ -9,11 +9,12 @@ export interface Props extends BoxProps {
     flexDirection?: 'row' | 'column';
     gap?: string | number;
     flexGrow?: number;
+    flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse';
 }
 
-const Flex: FC<Props> = ({children, alignItems,flexGrow, justifyContent, flexDirection,gap, ...props}) => {
+const Flex: FC<Props> = ({children,flexWrap, alignItems,flexGrow, justifyContent, flexDirection,gap, ...props}) => {
     return (
-        <Box {...props} style={{...props.style, display: 'flex', flexDirection,flexGrow, alignItems,gap, justifyContent}} >
+        <Box {...props} style={{...props.style, display: 'flex', flexWrap, flexDirection,flexGrow, alignItems,gap, justifyContent}} >
             {children}
         </Box>
     )

@@ -8,12 +8,14 @@ const FORM_FIELDS = [
     {
         name: 'username',
         label: 'Email',
-        validation: validationPatterns.email
+        validation: validationPatterns.email,
+        autoComplete: 'email'
     },
     {
         name: 'password',
         label: 'Password',
-        type: 'password'
+        type: 'password',
+        autoComplete: 'current-password'
     }
 ]
 

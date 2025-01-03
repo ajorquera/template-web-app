@@ -1,5 +1,5 @@
 import { FC, ReactNode, useState } from 'react';
-import Card, {Props as CardProps} from '../Card';
+import Card, {Props as CardProps} from '../Card/Card';
 
 import Text from '../Text';
 import Form, {TextInputForm, validateObj} from '../Form';
@@ -57,7 +57,7 @@ const AuthBaseForm: FC<Props> = ({onSubmit, loading, error, formFields, title, f
     const [formProps] = useState(getFormProps(formFields));
 
     return (
-        <Card display="inline-block" width={300} {...props}>
+        <Card elevation={5} display="inline-block" width={300} {...props}>
             <Text as="h2" display='block' textAlign="center">{title}</Text>
             {description}
             
@@ -85,13 +85,13 @@ const AuthBaseForm: FC<Props> = ({onSubmit, loading, error, formFields, title, f
                     <Text fontSize={12} fontWeight="bold" textAlign='center'>
                         - OR - 
                     </Text>
-                    {sso.map(({provider, opts}) => {
+                    {sso.map(({provider, opts}, i) => {
                         let node:ReactNode = null;
                         
                         if(provider === 'Apple') {
-                            node = <SSOButton icon={AppleSVG} {...opts} >Sign in for Apple</SSOButton>
+                            node = <SSOButton key={i} icon={AppleSVG} {...opts} >Sign in for Apple</SSOButton>
                         } else if(provider === 'Google') {
-                            node = <SSOButton icon={GoogleSVG} {...opts}>Sign in for Google</SSOButton>;
+                            node = <SSOButton key={i} icon={GoogleSVG} {...opts}>Sign in for Google</SSOButton>;
                         }
 
                         return node
