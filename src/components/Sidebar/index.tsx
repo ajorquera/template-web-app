@@ -1,6 +1,10 @@
-import { FC, Fragment } from 'react';
+import { FC, useMemo } from 'react';
 import Box, {BoxProps} from '../Box';
+import Text from '../Text'
+import Link from '../Link'
 import React from 'react';
+
+import Menu from '../Menu'
 
 interface Item {
     label: string
@@ -16,13 +20,19 @@ export interface Props extends BoxProps {
  * Sidebar
  */
 const Sidebar: FC<Props> = ({children, items, ...props}) => {
+
+    const innerItems = useMemo(() => items.map(item => {
+        const children = item.href ? <Link width="100%" display='block' href={item.href}>{item.label}</Link> : <Text>{item.label}</Text>;
+
+        return {
+            ...item, 
+            children
+        };
+    }), [items]);
+
     return (
-        <Box p={10} borderRight='2px solid black' {...props}>
-            {items?.map((item, index) => (
-                <Fragment key={index}>
-                    {item.label}
-                </Fragment>
-            ))}
+        <Box borderRight='2px solid black' {...props}>
+            <Menu items={innerItems} />
         </Box>
     );
 };

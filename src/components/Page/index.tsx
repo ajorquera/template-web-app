@@ -11,7 +11,7 @@ export interface Props extends BoxProps {
  */
 const Page: FC<Props> = ({children, ...props}) => {
     return (
-        <Box p={16} {...props}>
+        <Box py="5%" margin="auto 10%" {...props}>
             {children}
         </Box>
     );

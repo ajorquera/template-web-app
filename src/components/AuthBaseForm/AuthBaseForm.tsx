@@ -5,7 +5,7 @@ import Text from '../Text';
 import Form, {TextInputForm, validateObj} from '../Form';
 import Box from '../Box';
 import Flex from '../Flex';
-import Button from '../Button';
+import Button from '../Button/Button';
 import SSOButton from '../SSOButton';
 import React from 'react';
 import GoogleSVG from '../../assets/icons/google.svg?react';

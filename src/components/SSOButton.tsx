@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import Button, {Props as ButtonProps} from './Button';
+import Button, {Props as ButtonProps} from './Button/Button';
 import Flex from './Flex';
 import Text from './Text';
 import React from 'react';

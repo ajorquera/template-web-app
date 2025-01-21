@@ -1,0 +1,7 @@
+.MenuItem {
+    display: flex;
+    list-style: none;
+    margin: 10px;
+    align-items: center;
+    white-space: nowrap;
+}

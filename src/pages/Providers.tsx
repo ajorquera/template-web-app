@@ -12,8 +12,8 @@ const Providers: FC = () => {
     return (
         <Box>
             <Text as="h2" mb={20}>Providers</Text>
-            <Flex flexWrap="wrap" justifyContent="space-between" gap={50}>
-                {PROVIDERS.map((provider) => <ProviderCard onClick={() => onClick(provider)} width="20%" key={provider.id} name={provider.name} logoUrl={provider.logoUrl} />)}
+            <Flex flexWrap="wrap" gap={50}>
+                {PROVIDERS.map((provider) => <ProviderCard onClick={() => onClick(provider)} width="200px" key={provider.id} name={provider.name} logoUrl={provider.logoUrl} />)}
             </Flex>
         </Box>
     );

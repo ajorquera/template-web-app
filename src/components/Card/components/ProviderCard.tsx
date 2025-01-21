@@ -20,7 +20,7 @@ const ProviderCard: FC<Props> = ({name,logoUrl, ...props}) => {
     }
 
     return (
-        <Card p={0} {...props} style={style}>
+        <Card p={10} {...props} style={style}>
             <Flex alignItems='center' flexDirection='column'>
                 <img style={{width: "100%", height: '100%'}} src={logoUrl} />
                 <Box width="100%" p={10} borderTop="1px solid black">
