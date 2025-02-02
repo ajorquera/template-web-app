@@ -4,7 +4,7 @@ interface Opts {
     autoRun?: boolean;
 }
 
-const useAsync = <T>(asyncFn: (val: any) => Promise<T>, opts: Opts = { autoRun: true }) => {
+const useAsync = <T>(asyncFn: (val: any) => Promise<T>, opts?: Opts) => {
     const [loading, setLoading] = useState(false);
     const [value, setValue] = useState<T | null>(null);
     const [error, setError] = useState<Error | null>(null);

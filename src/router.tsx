@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       element: <DashboardLayout />,
       children: [
         {
-          path: "",
+          path: "providers",
           element: <Providers />
         }
       ]

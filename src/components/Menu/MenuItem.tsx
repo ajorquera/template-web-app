@@ -11,8 +11,8 @@ const getOnHover = (props: Props) => {
     return ({...props, '&:hover:': props.hoverColor})
 };
 
-const MenuItem: FC<Props> = ({...props}) => {
-    const style = getOnHover(props);
+const MenuItem: FC<Props> = ({hoverColor,...props}) => {
+    const style = getOnHover({hoverColor, ...props});
     return <Box className="MenuItem" as="li" {...props} style={style}/>
 }
 

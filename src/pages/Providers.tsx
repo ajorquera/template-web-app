@@ -1,10 +1,18 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Box, Flex, ProviderCard, Text } from "../components";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getProviders } from "../api/saltAgeApi";
 
 const Providers: FC = () => {
     const navigate = useNavigate();
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        getProviders().then(setData);
+    }, [getProviders]);
+
+    console.log(data);
     const onClick = (provider: any) => {
         navigate('/provider/' + provider.id);
     };

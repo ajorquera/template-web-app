@@ -14,8 +14,8 @@ const SIDEBAR_ITEMS: SidebarProps['items'] = [
         href: '/dashboard'
     },
     {
-        label: 'Connections',
-        href: '/dashboard/connections'
+        label: 'Providers',
+        href: '/dashboard/providers'
     }
 ]
 
