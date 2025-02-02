@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import {AuthBaseForm, validationPatterns, Text, RouterLink, Box} from '../../components';
+import {AuthBaseForm, RouterLink, Text, validationPatterns} from '../../components';
 import { signIn } from "aws-amplify/auth"
 import { useAsync } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
@@ -15,6 +15,7 @@ const FORM_FIELDS = [
         name: 'password',
         label: 'Password',
         type: 'password',
+        validation: validationPatterns.required,
         autoComplete: 'current-password'
     }
 ]
@@ -36,7 +37,6 @@ const Login = () => {
     }, [value, error]);
     return (
         <AuthBaseForm 
-            sso={[{provider: 'Google', opts: {}}, {provider: 'Apple', opts: {}}]}
             title='Login' 
             formFields={FORM_FIELDS} 
             error={error?.message} 

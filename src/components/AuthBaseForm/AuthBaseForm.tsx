@@ -80,7 +80,7 @@ const AuthBaseForm: FC<Props> = ({onSubmit, loading, error, formFields, title, f
                 </>
                 )}
             </Form>
-            <Box>
+            <Box my={10} flexDirection='column' gap={10}>
                 {sso && <Flex my={10} flexDirection='column' gap={10}>
                     <Text fontSize={12} fontWeight="bold" textAlign='center'>
                         - OR - 

@@ -16,7 +16,7 @@ const Card: FC<Props> = ({elevation=1, ...props}) => {
     const boxShadow = `${amount}px ${amount}px 0px 0px rgba(0, 0, 0, 1)`;
 
     return (
-        <Box border=".5px solid black" p="1.5rem" className='Card'  {...props} style={{boxShadow, ...props.style}} />
+        <Box bg="white" border=".5px solid black" p="1.5rem" className='Card'  {...props} style={{boxShadow, ...props.style}} />
     );
 };
 

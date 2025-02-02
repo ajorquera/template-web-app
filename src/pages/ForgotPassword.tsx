@@ -71,7 +71,7 @@ const ForgotPassword = () => {
             error={error?.message} 
             onSubmit={resetAsync.execute} 
             loading={loading} 
-            footer={(<Text fontSize={12} textAlign='right'><Text>Go back to <RouterLink href="/register">login</RouterLink></Text></Text>)}
+            footer={(<Text as="div" fontSize={12} textAlign='right'><Text>Go back to <RouterLink href="/register">login</RouterLink></Text></Text>)}
         />
     } else if (state === 'reset-password') {
         node = <AuthBaseForm 
@@ -87,7 +87,7 @@ const ForgotPassword = () => {
                 });
             }} 
             loading={loading} 
-            footer={(<Text fontSize={12} textAlign='right'><Text>Go back to <RouterLink href="/register">login</RouterLink></Text></Text>)}
+            footer={(<Text as="div" fontSize={12} textAlign='right'><Text>Go back to <RouterLink href="/register">login</RouterLink></Text></Text>)}
         />;
     } else if (state === 'success') {
         node = <Message title='Success'>
