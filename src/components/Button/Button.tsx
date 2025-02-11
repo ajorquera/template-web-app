@@ -1,11 +1,10 @@
 import "./Button.css"
 
 import { ButtonHTMLAttributes, FC } from "react"
-import Text, { TextProps } from "../Text"
-import React from "react"
+import Text, { TextProps } from "@/components/Text"
 
 
-export interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, TextProps {
+export interface Props extends ButtonHTMLAttributes<HTMLButtonElement>, Omit<TextProps, 'onClick'> {
     fullWidth?: boolean;
 }
 

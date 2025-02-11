@@ -1,6 +1,5 @@
 import { FC } from "react"
 import Box, { BoxProps } from "../Box"
-import React from "react";
 import "./Text.css";
 
 interface Props extends BoxProps {
@@ -18,4 +17,4 @@ const Text: FC<Props> = ({ children, textAlign, fontWeight,verticalAlign, fontSi
 
 export default Text;
 
-export {Props as TextProps };
+export type {Props as TextProps };

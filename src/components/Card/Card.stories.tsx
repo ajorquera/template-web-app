@@ -1,17 +1,5 @@
 import Card from './Card';
-import React, { FC } from 'react';
-
-const simpleStory = (Component: FC<any>, defaultProps?) => (props) => (
-    <Component {...defaultProps} {...props} />
-)
-
-const gridStory = (Component: FC<any>, items?) => (props) => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-        {items.map((item, index) => (
-            <Component key={index} {...item} />
-        ))}
-    </div>
-)
+import {simpleStory, gridStory} from '../../utils/storiesUtils'
 
 const commonProps = {
     children: 'Elevation ${elevation}',
