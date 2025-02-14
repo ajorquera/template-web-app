@@ -9,7 +9,8 @@ dist-ssr
 
 # Directories
 coverage/
-.vscode/*
+.vscode/
+.terraform/
 
 # files
 !.vscode/extensions.json
@@ -21,6 +22,9 @@ coverage/
 *.sln
 *.sw?
 .env
+package-lock.json
+.tfvars
+
 
 
 # amplify

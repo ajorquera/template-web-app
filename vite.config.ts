@@ -6,12 +6,6 @@ import path from 'path';
 export default defineConfig({
   base: process.env.BASE_URL ?? '/',
   plugins: [react(), svgr()],
-  test: {
-    coverage: {
-      reporter: ['text', 'lcov'],
-      reportsDirectory: './coverage',
-    },
-  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
